@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axiosInstance from "../axiosConfig";
 import { useAuth } from "../context/AuthContext";
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from "recharts";
+import EmissionFactorForm from "../components/EmissionFactorForm";
+import AdminActivityList from "../components/AdminActivityList";
 
 // Colors mimicking your Figma design
 const COLORS = ["#ef4444", "#eab308", "#22c55e", "#3b82f6"]; // Red, Yellow, Green, Blue
@@ -149,6 +151,8 @@ const AdminDashboard = () => {
           </div>
         </div>
       </div>
+      <EmissionFactorForm />
+      <AdminActivityList />
     </div>
   );
 };
