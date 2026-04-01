@@ -10,6 +10,7 @@ const {
   updateEmissionFactor,
   getAllActivities, // NEW
   deleteAnyActivity,
+getActivityBreakdown
 } = require("../controllers/adminController");
 const { protect, admin } = require("../middleware/authMiddleware");
 
@@ -29,5 +30,6 @@ router.get("/factors", getFactors);
 router.post("/factors", upsertFactor);
 router.get("/activities", getAllActivities);
 router.delete("/activities/:id", deleteAnyActivity);
+router.get("/reports/breakdown", getActivityBreakdown);
 
 module.exports = router;

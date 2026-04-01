@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "http://51.21.181.211:5000",
 });
 
 // THE ADDITION: This function runs automatically before EVERY request

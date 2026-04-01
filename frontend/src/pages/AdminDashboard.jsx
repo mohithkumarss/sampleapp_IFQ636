@@ -25,18 +25,14 @@ const AdminDashboard = () => {
       const [statsRes, usersRes, breakdownRes] = await Promise.all([
         axiosInstance.get("/api/admin/stats"),
         axiosInstance.get("/api/admin/users"),
-        axiosInstance.get("/api/reports/breakdown"),
+        axiosInstance.get("/api/admin/reports/breakdown"),
       ]);
 
       setStats(statsRes.data);
       setUsers(usersRes.data);
 
       // Format data for Recharts Doughnut
-      const chartData = breakdownRes.data.map((item) => ({
-        name: item._id,
-        value: item.total,
-      }));
-      setBreakdown(chartData);
+      setBreakdown(breakdownRes.data);
     } catch (error) {
       console.error("Error fetching admin data", error);
     } finally {
