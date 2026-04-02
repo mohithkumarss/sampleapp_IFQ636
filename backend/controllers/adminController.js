@@ -197,24 +197,25 @@ const getActivityBreakdown = async (req, res) => {
         // 1. Group by the activity type and sum up the emissions
         $group: {
           _id: "$type", // IMPORTANT: Change "$type" if your schema uses "$activityType" or "$category"
-          totalValue: { $sum: "$emission" } 
-        }
+          totalValue: { $sum: "$emission" },
+        },
       },
       {
         // 2. Format the output to exactly what Recharts/Chart.js expects: [{ name: 'Transport', value: 120 }]
         $project: {
           _id: 0,
-          name: "$_id", 
-          value: "$totalValue" 
-        }
-      }
+          name: "$_id",
+          value: "$totalValue",
+        },
+      },
     ]);
 
     // If there's no data, it returns [], which is fine, but if there is data, it returns the formatted array!
     res.status(200).json(breakdown);
-
   } catch (error) {
-    res.status(500).json({ message: "Error generating breakdown", error: error.message });
+    res
+      .status(500)
+      .json({ message: "Error generating breakdown", error: error.message });
   }
 };
 module.exports = {
@@ -224,7 +225,7 @@ module.exports = {
   getEmissionFactors,
   createEmissionFactor,
   updateEmissionFactor,
-  getAllActivities, // Make sure this is here!
-  deleteAnyActivity, // Make sure this is here!
-getActivityBreakdown
+  getAllActivities,
+  deleteAnyActivity,
+  getActivityBreakdown,
 };
