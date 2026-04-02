@@ -86,7 +86,7 @@ const CarbonChart = ({ activities }) => {
             <Pie
               data={data}
               cx="50%"
-              cy="45%" // Shifted slightly up to make room for the legend
+              cy="50%" // Shifted slightly up to make room for the legend
               innerRadius={75}
               outerRadius={105}
               paddingAngle={4}
@@ -116,14 +116,17 @@ const CarbonChart = ({ activities }) => {
                 fontSize: "13px",
                 fontWeight: "600",
               }}
-              formatter={(value) => [`${value.toFixed(2)} kg`, "CO₂"]}
+              formatter={(value, name) => [`${value.toFixed(2)} kg CO₂`, name]}
               labelStyle={{ display: "none" }}
             />
+
             <Legend
               verticalAlign="bottom"
-              height={36}
+              align="center"
               iconType="circle"
-              iconSize={8}
+              iconSize={6}
+              layout="horizontal"
+              wrapperStyle={{ paddingTop: "20px" }}
               formatter={renderLegendText}
             />
           </PieChart>

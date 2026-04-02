@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axiosInstance from "../axiosConfig";
 import { useAuth } from "../context/AuthContext";
-import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from "recharts";
+import {
+  PieChart,
+  Pie,
+  Cell,
+  Tooltip,
+  ResponsiveContainer,
+  Legend,
+} from "recharts";
 import EmissionFactorForm from "../components/EmissionFactorForm";
 import AdminActivityList from "../components/AdminActivityList";
 
@@ -73,6 +80,13 @@ const AdminDashboard = () => {
       </div>
     );
   }
+  const renderLegendText = (value) => {
+    return (
+      <span className="text-xs font-bold text-gray-600 tracking-wider uppercase ml-1">
+        {value}
+      </span>
+    );
+  };
 
   return (
     <div className="min-h-screen bg-[#FAFAFA] font-sans text-gray-900 pb-20">
@@ -194,8 +208,21 @@ const AdminDashboard = () => {
                         fontSize: "13px",
                         fontWeight: "600",
                       }}
-                      formatter={(value) => [`${value.toFixed(2)} kg`, "CO₂"]}
-                      labelStyle={{ display: "none" }} // Hides the duplicate category name
+                      formatter={(value, name) => [
+                        `${value.toFixed(2)} kg CO₂`,
+                        name,
+                      ]}
+                      labelStyle={{ display: "none" }}
+                    />
+
+                    <Legend
+                      verticalAlign="bottom"
+                      align="center"
+                      iconType="circle"
+                      iconSize={6}
+                      layout="horizontal"
+                      wrapperStyle={{ paddingTop: "20px" }}
+                      formatter={renderLegendText}
                     />
                   </PieChart>
                 </ResponsiveContainer>
