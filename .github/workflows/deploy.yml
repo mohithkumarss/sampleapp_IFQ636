@@ -11,35 +11,39 @@ jobs:
     steps:
       - name: Deploy application via SSH
         uses: appleboy/ssh-action@v1.0.3
-        # 1. Define the secret as an environment variable for this step
         env:
           REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
-          # 2. Pass that variable securely into the remote EC2 terminal
           envs: REACT_APP_API_URL
           script: |
             # Navigate to the project directory
             cd ~/sampleapp_IFQ636
 
-            # Bulletproof Git Update: Ignore local changes and force match GitHub
+            # Force sync with GitHub (clears any local conflicts)
             git fetch --all
             git reset --hard origin/main
 
-            # Navigate to the backend and install any new dependencies
+            # Backend setup
             cd backend
             npm install
 
-            # Navigate to frontend, configure environment, and build
+            # Frontend setup and memory-boosted build
             cd ../frontend
             npm install
 
-            # 3. Create the .env file using the injected GitHub Secret
+            # Inject the production API URL from GitHub Secrets
             echo "REACT_APP_API_URL=$REACT_APP_API_URL" > .env
 
+            # Increase Node memory limit to 2GB to prevent "Heap out of memory" crash
+            export NODE_OPTIONS="--max-old-space-size=2048"
             npm run build
 
-            # Restart the Node server and frontend using PM2
+            # Restart all processes via PM2
             pm2 restart all
+            pm2 save
+
+            # Reset terminal location
+            cd ~
