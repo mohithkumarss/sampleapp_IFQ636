@@ -2,7 +2,7 @@ name: Deploy to EC2
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   deploy:
@@ -11,25 +11,35 @@ jobs:
     steps:
       - name: Deploy application via SSH
         uses: appleboy/ssh-action@v1.0.3
+        # 1. Define the secret as an environment variable for this step
+        env:
+          REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
+          # 2. Pass that variable securely into the remote EC2 terminal
+          envs: REACT_APP_API_URL
           script: |
             # Navigate to the project directory
             cd ~/sampleapp_IFQ636
-            
-            # Pull the latest changes from GitHub
-            git pull origin main
-            
+
+            # Bulletproof Git Update: Ignore local changes and force match GitHub
+            git fetch --all
+            git reset --hard origin/main
+
             # Navigate to the backend and install any new dependencies
             cd backend
             npm install
 
-            #after everypush the frontend has to be rebuilt
+            # Navigate to frontend, configure environment, and build
             cd ../frontend
             npm install
+
+            # 3. Create the .env file using the injected GitHub Secret
+            echo "REACT_APP_API_URL=$REACT_APP_API_URL" > .env
+
             npm run build
-            
-            # Restart the Node server using PM2
+
+            # Restart the Node server and frontend using PM2
             pm2 restart all

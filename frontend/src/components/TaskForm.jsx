@@ -70,13 +70,13 @@ const TaskForm = ({ tasks, setTasks, editingTask, setEditingTask }) => {
   };
 
   return (
-    <div className="bg-white p-7 rounded-2xl shadow-[0_2px_10px_rgb(0,0,0,0.02)] border border-gray-200/60 mb-8 transition-all">
-      <div className="mb-6 border-b border-gray-100 pb-4 flex justify-between items-end">
+    <div className="bg-white p-7 rounded-2xl shadow-[0_2px_10px_rgb(0,0,0,0.02)] border border-emerald-100 mb-8 transition-all">
+      <div className="mb-6 border-b border-emerald-50 pb-4 flex justify-between items-end">
         <div>
-          <h2 className="text-lg font-black text-gray-900 tracking-tight">
+          <h2 className="text-lg font-black text-emerald-950 tracking-tight">
             {editingTask ? "Edit Task Record" : "Create New Task"}
           </h2>
-          <p className="text-xs font-medium text-gray-500 mt-0.5">
+          <p className="text-xs font-medium text-emerald-700/70 mt-0.5">
             {editingTask
               ? "Update the details for this specific entry."
               : "Fill out the details below to add a new entry."}
@@ -85,7 +85,7 @@ const TaskForm = ({ tasks, setTasks, editingTask, setEditingTask }) => {
 
         {/* Dynamic Badge */}
         <div
-          className={`px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-widest ${editingTask ? "bg-amber-50 text-amber-600" : "bg-gray-100 text-gray-500"}`}
+          className={`px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-widest ${editingTask ? "bg-amber-50 text-amber-600" : "bg-emerald-50 text-emerald-700"}`}
         >
           {editingTask ? "Edit Mode" : "Draft"}
         </div>
@@ -94,7 +94,7 @@ const TaskForm = ({ tasks, setTasks, editingTask, setEditingTask }) => {
       <form onSubmit={handleSubmit} className="flex flex-col gap-5">
         {/* Title Input */}
         <div>
-          <label className="block text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-2">
+          <label className="block text-[10px] font-bold uppercase tracking-widest text-emerald-700 mb-2">
             Task Title
           </label>
           <input
@@ -105,13 +105,13 @@ const TaskForm = ({ tasks, setTasks, editingTask, setEditingTask }) => {
               setFormData({ ...formData, title: e.target.value })
             }
             required
-            className="w-full bg-[#FAFAFA] border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-black focus:border-black focus:bg-white block p-3 transition-all outline-none"
+            className="w-full bg-[#FAFAFA] border border-emerald-100 text-emerald-950 text-sm rounded-lg focus:ring-emerald-900 focus:border-emerald-900 focus:bg-white block p-3 transition-all outline-none"
           />
         </div>
 
         {/* Description Input */}
         <div>
-          <label className="block text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-2">
+          <label className="block text-[10px] font-bold uppercase tracking-widest text-emerald-700 mb-2">
             Description
           </label>
           <textarea
@@ -121,13 +121,13 @@ const TaskForm = ({ tasks, setTasks, editingTask, setEditingTask }) => {
               setFormData({ ...formData, description: e.target.value })
             }
             rows="3"
-            className="w-full bg-[#FAFAFA] border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-black focus:border-black focus:bg-white block p-3 transition-all outline-none resize-none"
+            className="w-full bg-[#FAFAFA] border border-emerald-100 text-emerald-950 text-sm rounded-lg focus:ring-emerald-900 focus:border-emerald-900 focus:bg-white block p-3 transition-all outline-none resize-none"
           />
         </div>
 
         {/* Deadline Input */}
         <div>
-          <label className="block text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-2">
+          <label className="block text-[10px] font-bold uppercase tracking-widest text-emerald-700 mb-2">
             Deadline
           </label>
           <input
@@ -137,18 +137,18 @@ const TaskForm = ({ tasks, setTasks, editingTask, setEditingTask }) => {
               setFormData({ ...formData, deadline: e.target.value })
             }
             required
-            className="w-full bg-[#FAFAFA] border border-gray-200 text-gray-500 focus:text-gray-900 text-sm rounded-lg focus:ring-black focus:border-black focus:bg-white block p-3 transition-all outline-none cursor-pointer"
+            className="w-full bg-[#FAFAFA] border border-emerald-100 text-emerald-700/70 focus:text-emerald-950 text-sm rounded-lg focus:ring-emerald-900 focus:border-emerald-900 focus:bg-white block p-3 transition-all outline-none cursor-pointer"
           />
         </div>
 
         {/* Action Buttons */}
-        <div className="flex items-center justify-end gap-3 mt-2 pt-4 border-t border-gray-50">
+        <div className="flex items-center justify-end gap-3 mt-2 pt-4 border-t border-emerald-50">
           {editingTask && (
             <button
               type="button"
               onClick={handleCancel}
               disabled={isSubmitting}
-              className="text-xs font-bold text-gray-500 hover:text-gray-900 px-4 py-2.5 rounded-lg transition-colors disabled:opacity-50"
+              className="text-xs font-bold text-emerald-700 hover:text-emerald-950 px-4 py-2.5 rounded-lg transition-colors disabled:opacity-50"
             >
               Cancel Edit
             </button>
@@ -156,7 +156,7 @@ const TaskForm = ({ tasks, setTasks, editingTask, setEditingTask }) => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="bg-black hover:bg-gray-800 text-white text-sm font-semibold px-6 py-2.5 rounded-lg shadow-[0_2px_10px_rgb(0,0,0,0.1)] transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+            className="bg-emerald-900 hover:bg-emerald-800 text-white text-sm font-semibold px-6 py-2.5 rounded-lg shadow-[0_2px_10px_rgb(0,0,0,0.1)] transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
           >
             {isSubmitting && (
               <svg

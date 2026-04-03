@@ -42,7 +42,7 @@ const Register = () => {
       <div className="max-w-[400px] w-full space-y-8">
         {/* BRAND HEADER */}
         <div className="flex flex-col items-center text-center">
-          <div className="w-12 h-12 bg-gradient-to-br from-gray-900 to-black rounded-xl flex items-center justify-center shadow-lg ring-1 ring-black/10 mb-6 group hover:scale-105 transition-transform duration-300">
+          <div className="w-12 h-12 bg-gradient-to-br from-emerald-900 to-emerald-950 rounded-xl flex items-center justify-center shadow-lg ring-1 ring-emerald-900/10 mb-6 group hover:scale-105 transition-transform duration-300">
             <svg
               width="20"
               height="20"
@@ -56,16 +56,16 @@ const Register = () => {
               <path d="M18 6a8 8 0 1 0 0 12" />
             </svg>
           </div>
-          <h2 className="text-3xl font-black tracking-tighter text-gray-900">
+          <h2 className="text-3xl font-black tracking-tighter text-emerald-950">
             Create an account
           </h2>
-          <p className="mt-2 text-sm font-medium text-gray-500">
+          <p className="mt-2 text-sm font-medium text-emerald-700/70">
             Join CarbonTracker to start monitoring your footprint
           </p>
         </div>
 
         {/* REGISTRATION CARD */}
-        <div className="bg-white py-8 px-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-3xl border border-gray-200/60 sm:px-10">
+        <div className="bg-white py-8 px-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-3xl border border-emerald-100 sm:px-10">
           {error && (
             <div className="mb-6 bg-red-50/50 border border-red-100 rounded-xl p-4 flex items-start gap-3">
               <svg
@@ -89,23 +89,23 @@ const Register = () => {
 
           <form className="space-y-5" onSubmit={handleSubmit}>
             <div>
-              <label className="block text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-2">
+              <label className="block text-[10px] font-bold uppercase tracking-widest text-emerald-700 mb-2">
                 Full Name
               </label>
               <input
                 type="text"
-                placeholder="Jane Doe"
+                placeholder="Leokonda"
                 value={formData.name}
                 onChange={(e) =>
                   setFormData({ ...formData, name: e.target.value })
                 }
                 required
-                className="w-full bg-[#FAFAFA] border border-gray-200 text-gray-900 text-sm rounded-xl focus:ring-black focus:border-black focus:bg-white block p-3.5 transition-all outline-none"
+                className="w-full bg-[#FAFAFA] border border-emerald-100 text-emerald-950 text-sm rounded-xl focus:ring-emerald-900 focus:border-emerald-900 focus:bg-white block p-3.5 transition-all outline-none"
               />
             </div>
 
             <div>
-              <label className="block text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-2">
+              <label className="block text-[10px] font-bold uppercase tracking-widest text-emerald-700 mb-2">
                 Email Address
               </label>
               <input
@@ -116,12 +116,12 @@ const Register = () => {
                   setFormData({ ...formData, email: e.target.value })
                 }
                 required
-                className="w-full bg-[#FAFAFA] border border-gray-200 text-gray-900 text-sm rounded-xl focus:ring-black focus:border-black focus:bg-white block p-3.5 transition-all outline-none"
+                className="w-full bg-[#FAFAFA] border border-emerald-100 text-emerald-950 text-sm rounded-xl focus:ring-emerald-900 focus:border-emerald-900 focus:bg-white block p-3.5 transition-all outline-none"
               />
             </div>
 
             <div>
-              <label className="block text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-2">
+              <label className="block text-[10px] font-bold uppercase tracking-widest text-emerald-700 mb-2">
                 Password
               </label>
               <input
@@ -132,14 +132,14 @@ const Register = () => {
                   setFormData({ ...formData, password: e.target.value })
                 }
                 required
-                className="w-full bg-[#FAFAFA] border border-gray-200 text-gray-900 text-sm rounded-xl focus:ring-black focus:border-black focus:bg-white block p-3.5 transition-all outline-none"
+                className="w-full bg-[#FAFAFA] border border-emerald-100 text-emerald-950 text-sm rounded-xl focus:ring-emerald-900 focus:border-emerald-900 focus:bg-white block p-3.5 transition-all outline-none"
               />
             </div>
 
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full flex justify-center items-center py-3.5 px-4 mt-2 border border-transparent rounded-xl shadow-sm text-sm font-bold text-white bg-black hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full flex justify-center items-center py-3.5 px-4 mt-2 border border-transparent rounded-xl shadow-sm text-sm font-bold text-white bg-emerald-900 hover:bg-emerald-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-900 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isSubmitting ? (
                 <>
@@ -174,10 +174,10 @@ const Register = () => {
           {/* DIVIDER */}
           <div className="mt-8 relative">
             <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-gray-200/60"></div>
+              <div className="w-full border-t border-emerald-50"></div>
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="px-3 bg-white text-[10px] font-bold uppercase tracking-widest text-gray-400">
+              <span className="px-3 bg-white text-[10px] font-bold uppercase tracking-widest text-emerald-600/70">
                 Already have an account?
               </span>
             </div>
@@ -186,7 +186,7 @@ const Register = () => {
           <div className="mt-6 text-center">
             <Link
               to="/login"
-              className="text-sm font-bold text-gray-500 hover:text-black transition-colors"
+              className="text-sm font-bold text-emerald-700/80 hover:text-emerald-950 transition-colors"
             >
               Log in to your dashboard &rarr;
             </Link>

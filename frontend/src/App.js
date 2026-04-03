@@ -9,6 +9,7 @@ import Navbar from "./components/Navbar";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Profile from "./pages/Profile";
+import Report from './pages/Report';
 
 // We will build these two files next!
 import UserDashboard from "./pages/UserDashboard";
@@ -76,6 +77,14 @@ function App() {
 
           {/* If user types a random URL, send them to login */}
           <Route path="*" element={<Navigate to="/login" />} />
+          <Route
+            path="/reports"
+            element={
+              <ProtectedRoute>
+                <Report />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </main>
     </Router>

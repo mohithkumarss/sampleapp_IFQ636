@@ -51,23 +51,23 @@ const EmissionFactorForm = () => {
       {/* Header */}
       <div className="mb-6 flex justify-between items-end">
         <div>
-          <h3 className="text-base font-bold text-gray-900 tracking-tight">
+          <h3 className="text-base font-bold text-emerald-950 tracking-tight">
             System Multipliers
           </h3>
-          <p className="text-xs font-medium text-gray-500 mt-0.5">
+          <p className="text-xs font-medium text-emerald-700/70 mt-0.5">
             Configure carbon emission factors per activity unit
           </p>
         </div>
       </div>
 
-      <div className="bg-white p-7 rounded-2xl shadow-[0_2px_10px_rgb(0,0,0,0.02)] border border-gray-200/60 flex flex-col gap-8">
+      <div className="bg-white p-7 rounded-2xl shadow-[0_2px_10px_rgb(0,0,0,0.02)] border border-emerald-100 flex flex-col gap-8">
         {/* Input Form */}
         <form
           onSubmit={handleSubmit}
           className="flex flex-col md:flex-row gap-4 items-start md:items-end"
         >
           <div className="flex-grow w-full">
-            <label className="block text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-2">
+            <label className="block text-[10px] font-bold uppercase tracking-widest text-emerald-700 mb-2">
               Activity Category
             </label>
             <input
@@ -78,11 +78,11 @@ const EmissionFactorForm = () => {
                 setFormData({ ...formData, type: e.target.value })
               }
               required
-              className="w-full bg-[#FAFAFA] border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-black focus:border-black focus:bg-white block p-3 transition-all outline-none"
+              className="w-full bg-[#FAFAFA] border border-emerald-100 text-emerald-950 text-sm rounded-lg focus:ring-emerald-900 focus:border-emerald-900 focus:bg-white block p-3 transition-all outline-none"
             />
           </div>
           <div className="w-full md:w-1/3">
-            <label className="block text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-2">
+            <label className="block text-[10px] font-bold uppercase tracking-widest text-emerald-700 mb-2">
               Multiplier Value
             </label>
             <div className="relative">
@@ -95,17 +95,18 @@ const EmissionFactorForm = () => {
                   setFormData({ ...formData, factorValue: e.target.value })
                 }
                 required
-                className="w-full bg-[#FAFAFA] border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-black focus:border-black focus:bg-white block p-3 pr-16 transition-all outline-none"
+                className="w-full bg-[#FAFAFA] border border-emerald-100 text-emerald-950 text-sm rounded-lg focus:ring-emerald-900 focus:border-emerald-900 focus:bg-white block p-3 pr-16 transition-all outline-none"
               />
-              <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-gray-400">
+              <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-emerald-600/70">
                 kg/unit
               </span>
             </div>
           </div>
+          {/* THEME UPDATE: Deep emerald button */}
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full md:w-auto bg-black hover:bg-gray-800 text-white font-semibold rounded-lg text-sm px-6 py-3 transition-colors shadow-sm disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
+            className="w-full md:w-auto bg-emerald-900 hover:bg-emerald-800 text-white font-semibold rounded-lg text-sm px-6 py-3 transition-colors shadow-sm disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
           >
             {isSubmitting ? "Saving..." : "Save Factor"}
           </button>
@@ -116,7 +117,7 @@ const EmissionFactorForm = () => {
           <div
             className={`p-3 rounded-lg border text-sm font-medium transition-all ${
               message.type === "success"
-                ? "bg-green-50 border-green-200 text-green-800"
+                ? "bg-emerald-50 border-emerald-200 text-emerald-800"
                 : "bg-red-50 border-red-200 text-red-800"
             }`}
           >
@@ -125,16 +126,16 @@ const EmissionFactorForm = () => {
         )}
 
         {/* Divider */}
-        <div className="w-full h-px bg-gray-100"></div>
+        <div className="w-full h-px bg-emerald-50"></div>
 
         {/* Active Factors Display Grid */}
         <div>
-          <h4 className="text-xs font-bold text-gray-900 uppercase tracking-widest mb-4">
+          <h4 className="text-xs font-bold text-emerald-950 uppercase tracking-widest mb-4">
             Active Configurations
           </h4>
 
           {factors.length === 0 ? (
-            <div className="text-sm font-medium text-gray-400 italic">
+            <div className="text-sm font-medium text-emerald-600/70 italic">
               No custom factors have been configured yet.
             </div>
           ) : (
@@ -142,16 +143,16 @@ const EmissionFactorForm = () => {
               {factors.map((factor) => (
                 <div
                   key={factor._id}
-                  className="p-4 bg-[#FAFAFA] rounded-xl border border-gray-100 flex flex-col items-start hover:border-gray-300 transition-colors group"
+                  className="p-4 bg-emerald-50/30 rounded-xl border border-emerald-50 flex flex-col items-start hover:border-emerald-200 transition-colors group"
                 >
-                  <span className="text-[11px] font-bold uppercase tracking-widest text-gray-500 mb-1 group-hover:text-gray-900 transition-colors">
+                  <span className="text-[11px] font-bold uppercase tracking-widest text-emerald-700/70 mb-1 group-hover:text-emerald-950 transition-colors">
                     {factor.type}
                   </span>
                   <div className="flex items-baseline gap-1">
-                    <span className="text-2xl font-black text-gray-900 tracking-tighter">
+                    <span className="text-2xl font-black text-emerald-950 tracking-tighter">
                       {factor.factorValue}
                     </span>
-                    <span className="text-xs font-medium text-gray-500">
+                    <span className="text-xs font-medium text-emerald-600">
                       kg CO₂
                     </span>
                   </div>
