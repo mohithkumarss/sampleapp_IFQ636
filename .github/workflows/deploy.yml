@@ -13,11 +13,13 @@ jobs:
         uses: appleboy/ssh-action@v1.0.3
         env:
           REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
+          MONGO_URI: ${{ secrets.MONGO_URI }}
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
-          envs: REACT_APP_API_URL
+          envs: REACT_APP_API_URL,MONGO_URI
+
           script: |
             # Navigate to the project directory
             cd ~/sampleapp_IFQ636
@@ -30,11 +32,14 @@ jobs:
             cd backend
             npm install
 
+            # Inject the database URI from GitHub Secrets into the backend
+            echo "MONGO_URI=$MONGO_URI" > .env
+
             # Frontend setup and memory-boosted build
             cd ../frontend
             npm install
 
-            # Inject the production API URL from GitHub Secrets
+            # Inject the production API URL from GitHub Secrets into the frontend
             echo "REACT_APP_API_URL=$REACT_APP_API_URL" > .env
 
             # Increase Node memory limit to 2GB to prevent "Heap out of memory" crash
