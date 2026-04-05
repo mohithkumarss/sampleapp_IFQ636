@@ -36,3 +36,17 @@ CarbonTracker is a full-stack, enterprise-grade CRUD application designed to hel
    ```bash
    git clone [https://github.com/mohithkumarss/sampleapp_IFQ636.git](https://github.com/mohithkumarss/sampleapp_IFQ636.git)
    cd sampleapp_IFQ636
+
+2. **Backend Setup:**
+   ```bash
+   cd backend
+   npm install
+Create a .env file in the backend directory with your PORT, MONGO_URI, and JWT_SECRET.
+Run the server: npm start
+
+3. Frontend Setup:
+   ```bash
+   cd ../frontend
+   npm install
+Create a .env file in the frontend directory with REACT_APP_API_URL=http://localhost:5000.
+Run the client: npm start
