@@ -1,24 +1,38 @@
+# 🌱 CarbonTracker
 
-**Assessment 1.2 (Total Marks **20**)**
+CarbonTracker is a full-stack, enterprise-grade CRUD application designed to help individuals and organizations monitor, analyze, and manage their carbon footprint. Built with a sleek, eco-friendly emerald design system, the platform offers dynamic role-based dashboards, interactive data visualization, and automated DevOps pipelines.
 
-Assignment: **Software requirements analysis and design (**Full-Stack CRUD Application Development with DevOps Practices**)**
+## 🚀 Key Features
 
+* **Role-Based Dual-View Architecture:** * **Standard Users:** Log daily activities (Transport, Electricity, Food), view personalized emission breakdowns via interactive doughnut charts, and receive smart, dynamic insights based on their consumption habits.
+  * **Administrators:** Access a system-wide platform health dashboard, manage active accounts, view top platform emitters, and dynamically configure system-wide emission multiplier factors.
+* **Full CRUD Functionality:** Seamlessly Create, Read, Update, and Delete activity logs with instant visual feedback and UI updates.
+* **Interactive Data Visualization:** Real-time data rendering using Recharts for bar charts (trend analysis) and pie charts (category breakdowns).
+* **Enterprise Authentication:** Secure JWT-based authentication system with encrypted passwords and role-based route protection.
+* **Automated CI/CD Pipeline:** Fully automated deployments to AWS EC2 using GitHub Actions, ensuring seamless updates and secure environment variable injection.
 
----
+## 🛠️ Tech Stack
 
-**Objective**
+**Frontend:**
+* React.js (Hooks, Context API)
+* Tailwind CSS (Custom Dark Emerald Theme)
+* Recharts (Data Visualization)
+* Axios (API Client)
+* React Router DOM (Navigation)
 
-For this assessment, you have already been assigned a project. Your task is to develop a system that implements CRUD (Create, Read, Update, Delete) operations based on the selected project. The system should include both a user panel and an admin panel. Depending on the nature of your chosen project, you may decide how many CRUD operations are required to support the functionality of the system. You have been provided with a starter project that includes user authentication using Node.js, React.js, and MongoDB, your should extend this application based on your assigned project requirements. Ensure that the implemented features are appropriate and meaningful for your selected project. Your project should include the following:
-In this assignment you will complete the following tasks:
+**Backend:**
+* Node.js & Express.js (RESTful API)
+* MongoDB & Mongoose (Database & ODM)
+* JSON Web Tokens (JWT) & bcryptjs (Security)
 
-* **Basic Version Control using GitHub**
-* **Development, CI/CD Integration for Automated Deployment**
-* **Project report**
+**DevOps & Deployment:**
+* AWS EC2 (Ubuntu server)
+* PM2 (Process Management)
+* GitHub Actions (CI/CD Pipeline)
 
- 
----
+## ⚙️ Local Setup Instructions
 
-**GitHub link of the starter project: **[https://github.com/nahaQUT/sampleapp_IFQ636.git](https://github.com/nahaQUT/sampleapp_IFQ636.git)
-
----
-
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/mohithkumarss/sampleapp_IFQ636.git](https://github.com/mohithkumarss/sampleapp_IFQ636.git)
+   cd sampleapp_IFQ636
